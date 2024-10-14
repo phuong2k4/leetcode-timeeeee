@@ -63,4 +63,3 @@ for(let data of datajs){
     
     compare(newListNode,output)
 }
-
