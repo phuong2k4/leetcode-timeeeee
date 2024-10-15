@@ -4,7 +4,7 @@ function compare(calculateResult, defautResult){
     console.log(after_compare);
 }
 
-const datajson = require("./data.json");
+
 
 var lengthOfLongestSubstring = (s)=>{
     const charCountingArr = []; //size: min(s.length, 128) 128: ascii char
@@ -25,11 +25,30 @@ var lengthOfLongestSubstring = (s)=>{
         }
 
         longestSubstringLength = Math.max(longestSubstringLength, (rightIndex - leftIndex + 1));
-
         rightIndex++;
     }
     return longestSubstringLength;
 }
+
+var lengthOfLongestSubstring = (s)=>{
+    const charPositionMap = new Map();
+    const strLength = s.length;
+
+    let longestSubstringLength = 0;
+
+    for(let firstIndex = 0, secondIndex = 0; secondIndex < strLength; secondIndex++) {
+        const charAtSecondIndex = s.charAt(secondIndex);
+        if(charPositionMap.has(charAtSecondIndex)) {
+            firstIndex = Math.max(charPositionMap.get(charAtSecondIndex), firstIndex);
+        }
+
+        longestSubstringLength = Math.max(longestSubstringLength, secondIndex - firstIndex +1);
+        charPositionMap.set(charAtSecondIndex, secondIndex + 1);
+    }
+    return longestSubstringLength;
+}
+
+const datajson = require("./data.json");
 
 for(let data of datajson){
     const {input : {s},output} = data;
