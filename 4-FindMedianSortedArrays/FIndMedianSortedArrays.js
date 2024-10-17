@@ -52,6 +52,36 @@ const findMedianSortedArrays = (nums1, nums2)=>{
     }
 }
 
+function selectionSort(nums){
+    for(let i = 0;i<nums.length;i++){
+        let min = i;
+        for(let j = i+1;j<nums.length;j++){
+            if(nums[j] < nums[min]){
+                min = j;
+            }
+        }
+        let temp = nums[i];
+        nums[i] = nums[min];
+        nums[min] = temp;
+    }
+}
+
+
+var findMedianSortedArrays1 = (nums1, nums2) => {
+    const newArr = [];
+
+    for(let i = 0;i < nums1.length ;i++){
+        newArr.push(nums1[i])
+    }
+    for(let i = 0; i < nums2.length;i++){
+        newArr.push(nums2[i])
+    }
+    selectionSort(newArr);
+    const middleIndexValue = parseInt(newArr.length/2);
+
+    return newArr.length % 2 == 1 ? newArr[middleIndexValue] : (newArr[middleIndexValue-1] + newArr[middleIndexValue]) / 2;
+};
+
 
 const _datajson = require("./data.json");
 
@@ -65,7 +95,7 @@ for(let data of _datajson){
     const indexOfValue = _datajson.indexOf(data);
 
     console.time(`Test Case:#${indexOfValue}`);
-    const total = findMedianSortedArrays(nums1, nums2);
+    const total = findMedianSortedArrays1(nums1, nums2);
     console.timeEnd(`Test Case:#${indexOfValue}`);
 
     compare(total, output);
