@@ -66,7 +66,6 @@ function selectionSort(nums){
     }
 }
 
-
 var findMedianSortedArrays1 = (nums1, nums2) => {
     const newArr = [];
 
