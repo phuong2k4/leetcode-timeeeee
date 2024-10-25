@@ -35,7 +35,46 @@ function isSubstringStillAPalindrome(originalStr, left, right) {
     return result;
   };
 
+console.log("====================================")
 
+function longestPalindrome(s) {
+  // Initialize variables to store the longest palindrome found
+  let maxLength = 0;
+  let longestPal = '';
+
+  // Iterate over each character in the string as the starting point
+  for (let i = 0; i < s.length; i++) {
+
+      // Iterate over each character from the starting point to the end of the string
+      for (let j = i; j < s.length; j++) {
+
+          // Extract the substring from the current starting point to the current ending point
+          let subStr = s.substring(i, j + 1);
+
+          // Check if the current substring is a palindrome
+          if (isPalindrome(subStr)) {
+
+              // If the current palindrome is longer than the previously found longest, update the longest
+              if (subStr.length > maxLength) {
+                  maxLength = subStr.length;
+                  longestPal = subStr;
+              }
+          }
+      }
+  }
+
+  // Return the longest palindromic substring found
+  return longestPal;
+}
+
+// Helper function to check if a given string is a palindrome
+function isPalindrome(str) {
+
+  // Compare the string with its reverse
+  return str === str.split('').reverse().join('');
+}
+
+//----------compare result-----------
 const dataJson = require("./data.json");
 
 const compare = (result,output)=>{
