@@ -52,6 +52,8 @@ const findMedianSortedArrays = (nums1, nums2)=>{
     }
 }
 
+
+//=======================================================
 function selectionSort(nums){
     for(let i = 0;i<nums.length;i++){
         let min = i;
@@ -81,6 +83,66 @@ var findMedianSortedArrays1 = (nums1, nums2) => {
     return newArr.length % 2 == 1 ? newArr[middleIndexValue] : (newArr[middleIndexValue-1] + newArr[middleIndexValue]) / 2;
 };
 
+// =======================================================
+
+var findMedianSortedArrays2 = function(nums1, nums2) {
+    // Merge the two sorted arrays
+const mergedArray = mergeArrays(nums1, nums2);
+
+// Calculate the length of the merged array
+const totalLength = mergedArray.length;
+
+// Check if the total length is odd
+if (totalLength % 2 !== 0) {
+    
+    // Return the middle element if the length is odd
+    return mergedArray[Math.floor(totalLength / 2)];
+} else {
+    
+    // Calculate the average of the two middle elements if the length is even
+    const mid1 = mergedArray[totalLength / 2 - 1];
+    const mid2 = mergedArray[totalLength / 2];
+    return (mid1 + mid2) / 2;
+}
+}
+
+function mergeArrays(arr1, arr2) {
+
+// Initialize pointers for both arrays
+    let i = 0;
+    let j = 0;
+
+    // Initialize the merged array
+    const merged = [];
+
+    // Loop until one of the arrays is exhausted
+    while (i < arr1.length && j < arr2.length) {
+
+        // Compare elements from both arrays and push the smaller one
+        if (arr1[i] < arr2[j]) {
+            merged.push(arr1[i]);
+            i++;
+        } else {
+            merged.push(arr2[j]);
+            j++;
+        }
+    }
+
+    // Add remaining elements from arr1, if any
+    while (i < arr1.length) {
+        merged.push(arr1[i]);
+        i++;
+    }
+
+    // Add remaining elements from arr2, if any
+    while (j < arr2.length) {
+        merged.push(arr2[j]);
+        j++;
+    }
+
+    // Return the merged array
+    return merged;
+}
 
 const _datajson = require("./data.json");
 
