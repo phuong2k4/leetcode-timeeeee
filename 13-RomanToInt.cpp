@@ -11,7 +11,7 @@ class Solution{
             {'M',1000}
         };
         int res = 0;
-        for(int i = 0 ;i< s.size(); i++){
+        for(int i = 0 ;i < s.size(); i++){
             if (roman[s[i]] < roman[s[i+1]]){
                 res -= roman[s[i]];
             }else{

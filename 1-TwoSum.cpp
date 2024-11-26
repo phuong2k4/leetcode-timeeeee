@@ -1,4 +1,6 @@
 #include <iostream>
+#include <bits/stdc++.h>
+
 using namespace std;
 
 
@@ -53,3 +55,20 @@ class Solution3{
 		}
 };
 
+class Solution{
+	public:
+		int _twoSum_ (vector<int> vec,int total){
+			unordered_map<int, bool> _inputvector_;
+			vector<int> untilAlgorithmRun;
+			for(auto a : vec){
+				int subtract = total - vec[a];
+				if(!_inputvector_[subtract]){
+					_inputvector_[subtract]=true;
+					continue;
+				}
+				untilAlgorithmRun.push_back(a);
+				ubtilAlgorithmRun.push_back(subtract);
+			}
+			return untilAlgorithmRun;
+		}
+};
