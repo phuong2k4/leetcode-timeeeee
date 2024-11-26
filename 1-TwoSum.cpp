@@ -67,7 +67,7 @@ class Solution{
 					continue;
 				}
 				untilAlgorithmRun.push_back(a);
-				ubtilAlgorithmRun.push_back(subtract);
+				untilAlgorithmRun.push_back(subtract);
 			}
 			return untilAlgorithmRun;
 		}
