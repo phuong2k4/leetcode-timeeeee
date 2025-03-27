@@ -57,7 +57,7 @@ class Solution3{
 
 class Solution{
 	public:
-		int _twoSum_ (vector<int> vec,int total){
+		vector<int> _twoSum_ (vector<int> vec,int total){
 			unordered_map<int, bool> _inputvector_;
 			vector<int> untilAlgorithmRun;
 			for(auto a : vec){
